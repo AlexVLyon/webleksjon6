@@ -9,7 +9,7 @@ main {
     grid-area: main;
   }
 
-body{
+#app{
     margin: 0 auto;
     display:grid;
    
