@@ -18,9 +18,9 @@ function App() {
   {id:5,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
   {id:6,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"} ])
 
-  const createTodo = (todo) => {
-    todos.push(todo);
-  }
+  const createTodo = () => {
+    setTodos((prev) => [{ id: todos.length, ...formData }, ...prev]);
+  };
   
   const deleteTodo = (id) => {
     const newList = todos.filter((todo) => todo.id !==id);
@@ -33,30 +33,27 @@ function App() {
     deleteTodo(todo.id);
   }
 
-  const showModal = () =>{
-    modal.style.display = "block";
-  }
-
   return (
     <div className="App">
-    
-    
+      {modal && (
         <Modal
           createTodo={createTodo}
           setFormData={setFormData}
           formData={formData}
+          setModal={setModal}
         />
+      )}
+
      
       <Navbar/>
       <main>
-      <button id="newTodo" onClick={showModal()}>+Todo </button>
+      <button id="newTodo" onClick={() => setModal(!modal)}>+Todo </button>
       <TodoCardList todos = {todos} deleteTodo={deleteTodo} completeTodo={completeTodo}>
         <TodoCard />
       </TodoCardList>
 
       <CompletedList todos = {completedTodos}/>
 
-      <Modal />
 
       </main>
     </div>

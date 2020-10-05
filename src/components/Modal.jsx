@@ -1,10 +1,10 @@
 import React from "react";
 
-const Modal = ({ createTodo, setFormData, formData }) => {
-  
+const Modal = ({ createTodo, setFormData, formData, setModal}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createTodo();
+    setModal()
   };
 
   const updateValue = (event) => {
@@ -20,8 +20,9 @@ const Modal = ({ createTodo, setFormData, formData }) => {
       {console.log(formData)}
         <div id="createTodoModal" className="modal">
             <div className="modal-content">
+
                 <div id="modalHeader">
-                    <span className="close">&times;</span>
+                    <span className="close" onClick={() => setModal()}>&times;</span>
                     <h2>Create todo</h2>
                 </div>
                 
@@ -33,10 +34,10 @@ const Modal = ({ createTodo, setFormData, formData }) => {
                     <label>Title:</label>
                     <input
                       className="inputFelt"
-                      //value={formData.title}
+                      value={formData.title}
                       name="title"
                       onChange={updateValue}
-                     autoFocus
+                      autoFocus
                     />
 
                 
@@ -44,7 +45,7 @@ const Modal = ({ createTodo, setFormData, formData }) => {
                     <input className="inputFelt" 
                     id="description" 
                     maxLength="125"
-                    //value={formData.description}
+                    value={formData.description}
                     name="description"
                     onChange={updateValue}
                     />
@@ -52,7 +53,7 @@ const Modal = ({ createTodo, setFormData, formData }) => {
                     <label>Author:</label>
                     <input className="inputFelt" 
                     id="author"
-                    //value={formData.author}
+                    value={formData.author}
                     name="author"
                     onChange={updateValue}
                     />
