@@ -1,46 +1,63 @@
 import React from "react";
 
-
-
-const Modal = ({ addTodo, setFormData, formData }) => {
+const Modal = ({ createTodo, setFormData, formData }) => {
   
-    const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    completeTodo(todo);
-  };
-
-  const showModal = () => {
-    this.setState({ show: true });
-  };
-
-const hideModal = () => {
-    this.setState({ show: false });
+    createTodo();
   };
 
   const updateValue = (event) => {
-    setFormData({ title: event.target.value });
+    const inputValue = { [event.target.name]: event.target.value };
+    setFormData((prev) => ({
+      ...prev,
+      ...inputValue
+    }));
   };
 
   return (
       <>
+      {console.log(formData)}
         <div id="createTodoModal" className="modal">
             <div className="modal-content">
                 <div id="modalHeader">
-                    <span class="close">&times;</span>
+                    <span className="close">&times;</span>
                     <h2>Create todo</h2>
                 </div>
                 
                 <div id="inputWrapper">
-                    <label for="title">Title:</label>
-                    <input class="inputFelt" type="text" id="title"/>
+
+
+               <form onSubmit={handleSubmit}>
+
+                    <label>Title:</label>
+                    <input
+                      className="inputFelt"
+                      //value={formData.title}
+                      name="title"
+                      onChange={updateValue}
+                     autoFocus
+                    />
+
                 
-                    <label for="description">Description:</label>
-                    <input class="inputFelt" type="text" id="description" maxlength="125"/>
+                    <label>Description:</label>
+                    <input className="inputFelt" 
+                    id="description" 
+                    maxLength="125"
+                    //value={formData.description}
+                    name="description"
+                    onChange={updateValue}
+                    />
                  
-                    <label for="author">Author:</label>
-                    <input class="inputFelt" type="text" id="author"/>
-               
-                    <button id="createButton" onClick={ () => createTodo(todo) }>Create</button>
+                    <label>Author:</label>
+                    <input className="inputFelt" 
+                    id="author"
+                    //value={formData.author}
+                    name="author"
+                    onChange={updateValue}
+                    />
+                    <button id="createButton" type="submit">Create</button>
+                    </form>
                 </div>
             </div>
         </div>

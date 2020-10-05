@@ -7,14 +7,14 @@ import Modal from "./components/Modal"
 
 function App() {
   const [modal, setModal]  = useState(false);
-  const [formData, setFormData]  = useState ({ title:"test" })
+  const [formData, setFormData] = useState({ title: "", description: "", author:"" });
   const [todos, setTodos] = useState([
     {id:1,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air"},
     {id:2,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air"},
     {id:3,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air"}]
   );
   
-  const [completedTodos, setCompletedTodos] = useState ([{id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
+  const [completedTodos] = useState ([{id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
   {id:5,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
   {id:6,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"} ])
 
@@ -33,13 +33,23 @@ function App() {
     deleteTodo(todo.id);
   }
 
+  const showModal = () =>{
+    modal.style.display = "block";
+  }
+
   return (
     <div className="App">
     
-      
+    
+        <Modal
+          createTodo={createTodo}
+          setFormData={setFormData}
+          formData={formData}
+        />
+     
       <Navbar/>
       <main>
-      <button id="newTodo">+Todo </button>
+      <button id="newTodo" onClick={showModal()}>+Todo </button>
       <TodoCardList todos = {todos} deleteTodo={deleteTodo} completeTodo={completeTodo}>
         <TodoCard />
       </TodoCardList>
