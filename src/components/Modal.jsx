@@ -1,28 +1,27 @@
 import React from "react";
 
-const Modal = ({ createTodo, setFormData, formData, setModal}) => {
+const Modal = ({ createTodo, setFormData, formData, showModal}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createTodo();
-    setModal()
+    showModal()
   };
 
   const updateValue = (event) => {
     const inputValue = { [event.target.name]: event.target.value };
-    setFormData((prev) => ({
-      ...prev,
-      ...inputValue
-    }));
+      setFormData((prev) => ({
+        ...prev,
+        ...inputValue
+      }));
   };
 
   return (
       <>
-      {console.log(formData)}
         <div id="createTodoModal" className="modal">
             <div className="modal-content">
 
                 <div id="modalHeader">
-                    <span className="close" onClick={() => setModal()}>&times;</span>
+                    <span className="close" onClick={() => showModal()}>&times;</span>
                     <h2>Create todo</h2>
                 </div>
                 

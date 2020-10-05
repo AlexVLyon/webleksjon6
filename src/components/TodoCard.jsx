@@ -9,6 +9,7 @@ function TodoCard({ todo, deleteTodo, completeTodo }){
         <p>{todo.description}</p>
         <button className="deleteButton" onClick={ () => deleteTodo(todo.id)}>Delete</button>
         <button className="completeButton" onClick={ () => completeTodo(todo) }>  Complete </button>
+        <p>{todo.id}</p>
       </li>
      </>
     )
