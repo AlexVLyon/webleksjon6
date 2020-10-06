@@ -73,8 +73,6 @@ function App() {
                 <label htmlFor="filterByDate">Filter by date</label>
             </div>
 
-  
-
       <CompletedList todos = {completedTodos}/>
 
       

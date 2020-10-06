@@ -68,7 +68,7 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                       
                       {charCount < 50 ?
                        (<button id="createButton" type="submit">Create</button>) 
-                       : (<p>Maks 50 chars i feltene!</p>)
+                       : (<p>Maks 50 chars i description!</p>)
                       };
                       
                     </form>
