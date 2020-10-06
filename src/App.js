@@ -4,6 +4,8 @@ import TodoCard from "./components/TodoCard"
 import TodoCardList from "./components/TodoCardList"
 import Title from "./components/Title"
 import Modal from "./components/Modal"
+import Navbar from "./components/Navbar"
+import CompletedList from "./components/CompletedList"
 
 function App() {
   const [modal, showModal]  = useState(false);
@@ -31,7 +33,6 @@ function App() {
   }
 
   const completeTodo = (todo) => {
-    //skriver thisTodo for leselighet, blir gal av ordet todo
     completedTodos.push(todo);
     deleteTodo(todo.id);
   }
@@ -64,53 +65,5 @@ function App() {
     </div>
   );
 }
-
-function Navbar(){
-  return(
-    <>  
-    <header>
-      <Title title ="HIOF"/>
-
-      <div id="userNameBar">
-          <p className="headerBar">User user</p>
-        </div>
-      </header>
-    </>
-  )
-}
-
-const CompletedList = ({todos}) =>{
-  return(
-    <>
-    <table  id="completedTodos">
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Description</th>
-        <th>Date</th>
-      </tr>
-      {todos.map((todo) =>(
-        
-        <CompletedListItem todo={todo}  key={todo.id}/>
-        
-      ))}
-      </table>
-    </>
-  )
-}
-
-const CompletedListItem = ({todo}) => {
-  return(
-  <>
-  <tr>
-    <td>{todo.title}</td>
-    <td>{todo.author}</td>
-    <td>{todo.description}</td>
-    <td>{todo.completedDate}</td>
-  </tr>
-  </>
-  )
-}
-
 
 export default App;

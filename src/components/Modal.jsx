@@ -26,9 +26,7 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                 </div>
                 
                 <div id="inputWrapper">
-
-
-               <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
 
                     <label>Title:</label>
                     <input
@@ -40,23 +38,23 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                     />
 
                 
-                    <label>Description:</label>
-                    <input className="inputFelt" 
-                    id="description" 
-                    maxLength="125"
-                    value={formData.description}
-                    name="description"
-                    onChange={updateValue}
-                    />
+                      <label>Description:</label>
+                      <input className="inputFelt" 
+                      id="description" 
+                      maxLength="125"
+                      value={formData.description}
+                      name="description"
+                      onChange={updateValue}
+                      />
                  
-                    <label>Author:</label>
-                    <input className="inputFelt" 
-                    id="author"
-                    value={formData.author}
-                    name="author"
-                    onChange={updateValue}
-                    />
-                    <button id="createButton" type="submit">Create</button>
+                      <label>Author:</label>
+                      <input className="inputFelt" 
+                      id="author"
+                      value={formData.author}
+                      name="author"
+                      onChange={updateValue}
+                      />
+                      <button id="createButton" type="submit">Create</button>
                     </form>
                 </div>
             </div>
