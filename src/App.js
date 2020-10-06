@@ -70,7 +70,7 @@ function App() {
       <h2 id="completedTodosHeading">Completed todos</h2>
             <div id="checkboxContainer">
                 <input type="checkbox" name="filterByDate" id="filterByDateCheckbox" />
-                <label for="filterByDate">Filter by date</label>
+                <label htmlFor="filterByDate">Filter by date</label>
             </div>
 
   
