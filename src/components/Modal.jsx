@@ -40,20 +40,22 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                 
                       <label>Description:</label>
                       <input className="inputFelt" 
-                      id="description" 
-                      maxLength="125"
-                      value={formData.description}
-                      name="description"
-                      onChange={updateValue}
+                        id="description" 
+                        maxLength="125"
+                        value={formData.description}
+                        name="description"
+                        onChange={updateValue}
                       />
                  
                       <label>Author:</label>
-                      <input className="inputFelt" 
-                      id="author"
-                      value={formData.author}
-                      name="author"
-                      onChange={updateValue}
+                      <input 
+                        className="inputFelt" 
+                        id="author"
+                        value={formData.author}
+                        name="author"
+                        onChange={updateValue}
                       />
+                      
                       <button id="createButton" type="submit">Create</button>
                     </form>
                 </div>

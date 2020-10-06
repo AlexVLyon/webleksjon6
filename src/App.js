@@ -16,16 +16,23 @@ function App() {
     {id:3,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air"}]
   );
 
-  let idIncrement = 4;
   
   const [completedTodos] = useState ([{id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
   {id:5,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
   {id:6,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"} ])
 
+  const [count, setCount] = useState(7);
+
+  const increment = () => {
+    setCount(prevCount => prevCount + 1);
+  }
+
   const createTodo = () => {
-    setTodos((prev) => [{ id: idIncrement, ...formData }, ...prev]);
-    idIncrement++;
+    setTodos((prev) => [{ id: count, ...formData }, ...prev]);
+    increment();
   };
+
+
   
   const deleteTodo = (id) => {
     const newList = todos.filter((todo) => todo.id !==id);
@@ -33,7 +40,14 @@ function App() {
   }
 
   const completeTodo = (todo) => {
-    completedTodos.push(todo);
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let dato = day + "." + month + "." + year;
+
+    let completingTodo  = {...todo, completedDate:dato}
+    completedTodos.push(completingTodo);
     deleteTodo(todo.id);
   }
 
@@ -50,10 +64,14 @@ function App() {
         />
       )}
 
-     
+    
+
       <Navbar/>
       <main>
       <button id="newTodo" onClick={() => showModal(!modal)}>+Todo </button>
+
+      {todos.length == 0 && ( <h2>Jippi! Ingen todos i dag! :D</h2>)}
+
       <TodoCardList todos = {todos} deleteTodo={deleteTodo} completeTodo={completeTodo}>
         <TodoCard />
       </TodoCardList>
