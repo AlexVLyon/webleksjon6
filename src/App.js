@@ -1,8 +1,6 @@
 import React,{useState} from 'react';
 import './index.css'
-import TodoCard from "./components/TodoCard"
 import TodoCardList from "./components/TodoCardList"
-import Title from "./components/Title"
 import Modal from "./components/Modal"
 import Navbar from "./components/Navbar"
 import CompletedList from "./components/CompletedList"
@@ -32,8 +30,6 @@ function App() {
     increment();
   };
 
-
-  
   const deleteTodo = (id) => {
     const newList = todos.filter((todo) => todo.id !==id);
     setTodos(newList);
@@ -53,7 +49,6 @@ function App() {
 
   return (
     <div className="App">
-
       
       {modal && (
         <Modal
@@ -64,17 +59,21 @@ function App() {
         />
       )}
 
-    
-
       <Navbar/>
       <main>
       <button id="newTodo" onClick={() => showModal(!modal)}>+Todo </button>
 
-      {todos.length == 0 && ( <h2>Jippi! Ingen todos i dag! :D</h2>)}
+      {todos.length === 0 && ( <h2>Jippi! Ingen todos i dag! :D</h2>)}
 
-      <TodoCardList todos = {todos} deleteTodo={deleteTodo} completeTodo={completeTodo}>
-        <TodoCard />
-      </TodoCardList>
+      <TodoCardList todos = {todos} deleteTodo={deleteTodo} completeTodo={completeTodo} />
+
+      <h2 id="completedTodosHeading">Completed todos</h2>
+            <div id="checkboxContainer">
+                <input type="checkbox" name="filterByDate" id="filterByDateCheckbox" />
+                <label for="filterByDate">Filter by date</label>
+            </div>
+
+  
 
       <CompletedList todos = {completedTodos}/>
 

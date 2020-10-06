@@ -1,11 +1,11 @@
 import React from "react";
-import Title from "./Title"
+
 
 const Navbar = () =>{
     return(
       <>  
       <header>
-        <Title title ="HIOF"/>
+        <h1>HIOF</h1>
   
         <div id="userNameBar">
             <p className="headerBar">User user</p>

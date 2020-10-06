@@ -1,19 +1,29 @@
-import React from "react";
+import React,{useState} from "react";
 
 const Modal = ({ createTodo, setFormData, formData, showModal}) => {
+  const [charCount, setcharCount] = useState(0);
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     createTodo();
     showModal()
   };
 
-  const updateValue = (event) => {
+  const updateDescription = (event) =>{
+    setcharCount(event.target.value.length);
+    updateValue(event);
+  }
+
+  const updateValue = (event) => {  
     const inputValue = { [event.target.name]: event.target.value };
       setFormData((prev) => ({
         ...prev,
         ...inputValue
       }));
   };
+
+
 
   return (
       <>
@@ -44,7 +54,7 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                         maxLength="125"
                         value={formData.description}
                         name="description"
-                        onChange={updateValue}
+                        onChange={updateDescription}
                       />
                  
                       <label>Author:</label>
@@ -56,7 +66,11 @@ const Modal = ({ createTodo, setFormData, formData, showModal}) => {
                         onChange={updateValue}
                       />
                       
-                      <button id="createButton" type="submit">Create</button>
+                      {charCount < 50 ?
+                       (<button id="createButton" type="submit">Create</button>) 
+                       : (<p>Maks 50 chars i feltene!</p>)
+                      };
+                      
                     </form>
                 </div>
             </div>

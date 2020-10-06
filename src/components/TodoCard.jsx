@@ -1,15 +1,15 @@
 import React from "react";
+import Title from "./Title"
 
 function TodoCard({ todo, deleteTodo, completeTodo }){
     return(
       <>
       <li className="todo" key={todo.id}>
-        <h3>{todo.title}</h3>
+        <Title title={todo.title} />
         <p>{todo.author}</p>
         <p>{todo.description}</p>
         <button className="deleteButton" onClick={ () => deleteTodo(todo.id)}>Delete</button>
         <button className="completeButton" onClick={ () => completeTodo(todo) }>  Complete </button>
-        <p>{todo.id}</p>
       </li>
      </>
     )
